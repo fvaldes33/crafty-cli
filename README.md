@@ -3,6 +3,8 @@ CraftCms Project Starter
 
 So crafty... get it, get it?
 
+Maintained by [Franco Valdes](https://github.com/fvaldes33).
+
 ### Usage
 
 ## Start Project
