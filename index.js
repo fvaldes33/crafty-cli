@@ -8,7 +8,6 @@ const async = require("async"),
     chalk = require("chalk"),
     child_process = require('child_process'),
     download = require('download'),
-    exec = require('child_process').exec,
     inquirer = require("inquirer"),
     figlet = require("figlet"),
     fs = require("fs"),
@@ -26,7 +25,10 @@ const async = require("async"),
 
 /* Project Dependencies */
 const files = require('./lib/files');
+const plugins = require('./lib/plugins');
+
 const INSTALL_CONFIG = require('./install/craft');
+const craftyPath = getInstalledPath('crafty-cli') + '/';
 
 /* Store Prefs */
 let prefs = {};
@@ -306,7 +308,7 @@ let configure = () => {
                 }
             ];
 
-            files.moveTpl(INSTALL_CONFIG.CRAFT_INSTALL.DB.src, prefs.dir + INSTALL_CONFIG.CRAFT_INSTALL.DB.dest, rp)
+            files.moveTpl(craftyPath + INSTALL_CONFIG.CRAFT_INSTALL.DB.src, prefs.dir + INSTALL_CONFIG.CRAFT_INSTALL.DB.dest, rp)
                 .then((result) => {
                     console.log(chalk.bold.green('✓ Done Creating new db.php'));
                     callback(null);
@@ -329,7 +331,7 @@ let configure = () => {
                 }
             ];
 
-            files.moveTpl(INSTALL_CONFIG.CRAFT_INSTALL.GENERAL.src, prefs.dir + INSTALL_CONFIG.CRAFT_INSTALL.GENERAL.dest, rp)
+            files.moveTpl(craftyPath + INSTALL_CONFIG.CRAFT_INSTALL.GENERAL.src, prefs.dir + INSTALL_CONFIG.CRAFT_INSTALL.GENERAL.dest, rp)
                 .then((result) => {
                     console.log(chalk.bold.green('✓ Done Creating new general.php'));
                     callback(null);
@@ -400,4 +402,35 @@ program
     .description('Start Craft Project')
     .action(begin);
 
+program
+    .version(pkg.version)
+    .command('plugins [action] [name]')
+    .description('List your installed plugins')
+    .action((action, name) => {
+        if (!action){
+            console.log(chalk.bold.red("Available plugin commands are:"));
+            console.log(chalk.bold.red("- plugins list"));
+            console.log(chalk.bold.red("- plugins add [name]"));
+            console.log(chalk.bold.red("- plugins remove [name]"));
+            process.exit();
+        }
+
+        switch(action) {
+            case 'list':
+                plugins(action);
+            break;
+            case 'add':
+            case 'remove':
+                if (!name) {
+                    console.log(chalk.bold.red("Must provide a [name] to " + action));
+                    process.exit();
+                }
+                console.log(action + ' ' + name + ' plugin');
+                plugins(action, name);
+            break;
+        }
+    });
+
 program.parse(process.argv);
+
+if (!program.args.length) program.help();
