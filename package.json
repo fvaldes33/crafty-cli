@@ -33,6 +33,7 @@
     "touch": "^1.0.0",
     "unzip": "^0.1.11"
   },
+  "repository": "fvaldes33/crafty-cli",
   "bin": {
     "crafty": "./index.js"
   }
