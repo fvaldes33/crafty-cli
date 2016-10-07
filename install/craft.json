@@ -1,0 +1,18 @@
+{
+    "CRAFT_INSTALL" : {
+        "NAME" : "Base Craft Install",
+        "LOCATION" : "http://buildwithcraft.com/latest.zip?accept_license=yes",
+        "RENAME" : {
+            "src" : "/public/htaccess",
+            "dest" : "/public/.htaccess"
+        },
+        "DB" : {
+            "src" : "install/templates/_db.php",
+            "dest" : "/craft/config/db.php"
+        },
+        "GENERAL": {
+            "src" : "install/templates/_general.php",
+            "dest" : "/craft/config/general.php"
+        }
+    }
+}
