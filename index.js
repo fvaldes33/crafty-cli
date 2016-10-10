@@ -19,7 +19,7 @@ program
 
 program
     .version(pkg.version)
-    .command('plugins [action] [name]')
+    .command('plugin [action] [name]')
     .description('List your installed plugins')
     .action((action, name) => {
         if (!action){
