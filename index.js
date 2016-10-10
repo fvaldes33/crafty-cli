@@ -4,6 +4,7 @@
 /* NODE_MODULE Dependencies */
 const pkg       = require("./package");
 const program   = require("commander");
+const chalk     = require("chalk");
 
 /* Project Dependencies */
 const project   = require('./lib/project');
