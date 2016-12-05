@@ -13,13 +13,13 @@ const plugins   = require('./lib/plugins');
 /* Commands */
 program
     .version(pkg.version)
-    .command('start [name]')
+    .command('start-project [name]')
     .description('Start Craft Project')
     .action(project);
 
 program
     .version(pkg.version)
-    .command('plugin [action] [name]')
+    .command('plugins [action] [name]')
     .description('List your installed plugins')
     .action((action, name) => {
         if (!action){
