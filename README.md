@@ -13,7 +13,7 @@ Maintained by [Franco Valdes](https://github.com/fvaldes33).
 2. Use command 'crafty start [projectname]'
 3. Follow the prompts and done!
 
-#### NEW DOCKER SUPPORT
+### NEW DOCKER SUPPORT
 1. Adds docker-compose.yml file
 2. Sets up .env file for docker
 3. Creates localhost environment within craft configs.
