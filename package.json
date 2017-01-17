@@ -1,6 +1,6 @@
 {
   "name": "crafty-cli",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "Craft Cli Project Creator and Plugin Manager",
   "main": "index.js",
   "scripts": {
