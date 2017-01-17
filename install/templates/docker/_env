@@ -1,0 +1,4 @@
+PORT={{port}}
+DB_NAME={{dbName}}
+DB_USER={{dbUser}}
+DB_PASS={{dbPwd}}

@@ -6,13 +6,37 @@
             "src" : "/public/htaccess",
             "dest" : "/public/.htaccess"
         },
-        "DB" : {
-            "src" : "install/templates/_db.php",
-            "dest" : "/craft/config/db.php"
+        "LOCAL" : {
+            "DB" : {
+                "src" : "install/templates/_db.php",
+                "dest" : "/craft/config/db.php"
+            },
+            "GENERAL": {
+                "src" : "install/templates/_general.php",
+                "dest" : "/craft/config/general.php"
+            }
         },
-        "GENERAL": {
-            "src" : "install/templates/_general.php",
-            "dest" : "/craft/config/general.php"
+        "DOCKER" : {
+            "DB" : {
+                "src" : "install/templates/docker/_db.php",
+                "dest" : "/craft/config/db.php"
+            },
+            "GENERAL": {
+                "src" : "install/templates/docker/_general.php",
+                "dest" : "/craft/config/general.php"
+            },
+            "ENV": {
+                "src" : "install/templates/docker/_env",
+                "dest" : "/.env"  
+            },
+            "COMPOSE": {
+                "src" : "install/templates/docker/_docker.yml",
+                "dest" : "/docker-compose.yml"  
+            },
+            "IGNORE": {
+                "src" : "install/templates/docker/_gitignore",
+                "dest" : "/.gitignore"  
+            }
         }
     }
 }

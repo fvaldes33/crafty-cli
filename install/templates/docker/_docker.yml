@@ -1,0 +1,20 @@
+version: '2'
+services:
+  web:
+    image: 'darrencrossley/craftcms'
+    ports:
+      - '${PORT}:80'
+    environment:
+      - 'PORT=${PORT}'
+      - 'DB_NAME=${DB_NAME}'
+      - 'DB_USER=${DB_USER}'
+      - 'DB_PASS=${DB_PASS}'
+    volumes:
+      - './craft:/var/www/craft'
+      - './public:/var/www/html'
+  db:
+    image: 'skilgarriff/craft-mysql'
+    volumes:
+      - './db:/var/lib/mysql'
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=${DB_PASS}'
